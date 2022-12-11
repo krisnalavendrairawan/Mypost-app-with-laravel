@@ -7,14 +7,18 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link <?php if($title === 'Home'){ echo 'active'; } ?>" href="/">Home</a>
+          <a class="nav-link <?php if($active === 'home'){ echo 'active'; } ?>" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php if($title === 'About'){ echo 'active'; } ?>" href="/about">About</a>
+          <a class="nav-link <?php if($active === 'about'){ echo 'active'; } ?>" href="/about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php if($title === 'Posts'){ echo 'active'; } ?>" href="/blog">Posts</a>
+          <a class="nav-link <?php if($active === 'posts'){ echo 'active'; } ?>" href="/blog">Posts</a> 
         </li>
+        <li class="nav-item">
+          <a class="nav-link <?php if($active === 'categories'){ echo 'active'; } ?>" href="/categories">Categories</a>
+        </li>
+        {{-- $active merupakan variable active untuk  --}}
       </ul>
     </div>
   </div>
