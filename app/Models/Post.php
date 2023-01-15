@@ -5,10 +5,22 @@ namespace App\Models;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
+    use Sluggable;
     use HasFactory;
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
     // protected $fillable = ['title', 'excerpt', 'body'];
     protected $guarded = ['id'];
     protected $with = ['user', 'category']; //with sendiri merupakan fitur laravel untuk menjalankan eager loading agar menghindari N+1 problem
@@ -67,5 +79,11 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class); //1 post hanya dimiliki oleh satu user
+    }
+
+
+    public function getRouteKeyName() //untuk mengubah route key name menjadi slug
+    {
+        return 'slug';
     }
 }

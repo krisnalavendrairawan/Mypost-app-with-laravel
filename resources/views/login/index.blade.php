@@ -1,10 +1,17 @@
 @extends('layouts.main')
 
 @section('container')
+
+    @if (session()->has('success'))
+
+    <div class="alert alert-success" role="alert">
+      {{ session('success') }}
+    </div>
+
+    @endif
+
 <div class="row justify-content-center">
     <div class="col-md-4 ">
-
-
 
         <main class="form-signin w-100 m-auto">
             <h1 class="h3 mb-3 fw-normal d-flex justify-content-center">Please Login</h1>
@@ -12,7 +19,7 @@
             @csrf
             <div class="form-floating">
               <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="name" placeholder="Email" autofocus required value="{{ old('email') }}">
-              <label for="name">Email address</label>
+              <label for="email">Email address</label>
               @error('email')
                 <div class="invalid-feedback">
                 {{ $message }}
@@ -20,7 +27,7 @@
               @enderror
             </div>
             <div class="form-floating">
-              <input type="password" name="password" class="form-control @error('name') is-invalid @enderror" id="password" placeholder="Password" required> 
+              <input type="password" name="password" class="form-control @error('name') is-invalid @enderror" id="password" placeholder="Password" required>
               <label for="password">Password</label>
               @error('password')
                 <div class="invalid-feedback">

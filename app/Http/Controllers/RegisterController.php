@@ -29,10 +29,7 @@ class RegisterController extends Controller
 
         User::create($ValidatedData); //menggunakan method created untuk membuat data baru di database user
         // session()->flash('success', 'Register Success');
-        if ($ValidatedData) {
-            Session::flash('success', 'Register Success');
-        }
 
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Register Success');
     }
 }

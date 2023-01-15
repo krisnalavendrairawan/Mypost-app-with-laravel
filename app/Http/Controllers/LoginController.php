@@ -12,16 +12,15 @@ class LoginController extends Controller
     {
         return view('login.index', [
             'title' => 'Login',
-            'active' => 'login'
-
+            'active' => 'login',
         ]); //titik disini dinyatakan sebagai masuk kedalam folder login
     }
     public function authenticate(Request $request)
     {
         //validasi
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
-            'password' => 'required'
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
         if (Auth::attempt($credentials)) {
